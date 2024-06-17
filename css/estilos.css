@@ -1,0 +1,422 @@
+@import url('https://fonts.googleapis.com/css2?family=Tiny5&display=swap');
+
+body {
+  margin: 0px;
+  background: url("../img/fundo_jogo2.png") no-repeat center center fixed;
+  background-size: cover;
+  overflow: hidden;
+  font-family: "Tiny5", sans-serif;
+  font-weight: 400;
+}
+
+img {
+  vertical-align: middle;
+  
+}
+
+#fundo {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#start, #gameover, #vitoria {
+  width: 700px;
+  height: 300px;
+  background: rgb(36,164,36);
+  background: linear-gradient(90deg, rgba(36,164,36,1) 16%, rgba(0,128,0,1) 65%, rgba(23,105,23,1) 100%);
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  position: relative;
+  top: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.start-content {
+  text-align: center;
+}
+
+.helper {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.area_jogo {
+  position: absolute;
+  width: 768px;
+  height: 368px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  background: url("../img/fundo.png");
+}
+
+#gameover h1, #start h1, #vitoria h1 {
+  padding-top: 25px;
+  font-family: Tiny5;
+  font-size: 36px;
+}
+
+#gameover p, #start p, #vitoria p {
+  font-family: Tiny5;
+  font-size: 24px;
+}
+
+#gameover h2, #start h2, #vitoria h2 {
+  font-family: Tiny5;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.vida {
+  background-image: url("../img/lifebar2.png");
+  background-position: 0px 0px;
+  height: 92px;
+  left: 5px;
+  position: absolute;
+  top: 5px;
+  width: 90px;
+  z-index: 1;
+}
+
+
+.insectoide {
+  width: 105px;
+  height: 129px;
+  top: 75px;
+  left: 0px;
+  z-index: 10;
+  background-image: url("../img/Insectoide.png");
+  position: absolute;
+  animation: p_insectoide 0.9s steps(2) infinite;
+  -webkit-animation: p_insectoide 0.9s steps(2) infinite;
+  -moz-animation: p_insectoide 0.9s steps(2) infinite;
+  -ms-animation: p_insectoide 0.9s steps(2) infinite;
+  -o-animation: p_insectoide 0.9s steps(2) infinite;
+}
+
+@keyframes p_insectoide {
+  from { background-position: 0px; }
+  to { background-position: -211px; }
+}
+
+@-webkit-keyframes p_insectoide {
+  from { background-position: 0px; }
+  to { background-position: -211px; }
+}
+
+@-moz-keyframes p_insectoide {
+  from { background-position: 0px; }
+  to { background-position: -211px; }
+}
+
+@-ms-keyframes p_insectoide {
+  from { background-position: 0px; }
+  to { background-position: -211px; }
+}
+
+@-o-keyframes p_insectoide {
+  from { background-position: 0px; }
+  to { background-position: -211px; }
+}
+
+.insectoide_explode {
+  width: 95px;
+  height: 87px;
+  top: 10px;
+  left: 0px;
+  background-image: url("../img/morteinsectoide.png");
+  position: relative;
+  animation: pe_insectoide 0.9s steps(2) infinite;
+  -webkit-animation: pe_insectoide 0.9s steps(2) infinite;
+  -moz-animation: pe_insectoide 0.9s steps(2) infinite;
+  -ms-animation: pe_insectoide 0.9s steps(2) infinite;
+  -o-animation: pe_insectoide 0.9s steps(2) infinite;
+}
+
+@keyframes pe_insectoide {
+  from { background-position: 0px; }
+  to { background-position: -191px; }
+}
+
+@-webkit-keyframes pe_insectoide {
+  from { background-position: 0px; }
+  to { background-position: -191px; }
+}
+
+@-moz-keyframes pe_insectoide {
+  from { background-position: 0px; }
+  to { background-position: -191px; }
+}
+
+@-ms-keyframes pe_insectoide {
+  from { background-position: 0px; }
+  to { background-position: -191px; }
+}
+
+@-o-keyframes pe_insectoide {
+  from { background-position: 0px; }
+  to { background-position: -191px; }
+}
+
+.bot2 {
+  width: 98px;
+  height: 80px;
+  margin-top: 10px;
+  left: 660px;
+  position: absolute;
+  background-image: url("../img/vilgaxbot.png");
+  animation: p_bot2 2s ease-in-out infinite;
+}
+
+@keyframes p_bot2 {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+.bot2_explode {
+  width: 67px;
+  height: 83px;
+  margin-top: 10px;
+  left: 660px;
+  position: absolute;
+  background-image: url("../img/boomm.png");
+  animation: pe_bot2 0.5s steps(6) infinite;
+  -webkit-animation: pe_bot2 0.5s steps(6) infinite;
+  -moz-animation: pe_bot2 0.5s steps(6) infinite;
+  -ms-animation: pe_bot2 0.5s steps(6) infinite;
+  -o-animation: pe_bot2 0.5s steps(6) infinite;
+}
+
+@keyframes pe_bot2 {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+  from { background-position: 0px; }
+  to { background-position: -400px; }
+}
+
+@-webkit-keyframes pe_bot2 {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+  from { background-position: 0px; }
+  to { background-position: -400px; }
+}
+
+@-moz-keyframes pe_bot2 {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+  from { background-position: 0px; }
+  to { background-position: -400px; }
+}
+
+@-ms-keyframes pe_bot2 {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+  from { background-position: 0px; }
+  to { background-position: -400px; }
+}
+
+@-o-keyframes pe_bot2 {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+  from { background-position: 0px; }
+  to { background-position: -400px; }
+}
+
+.bot1 {
+  width: 98px;
+  height: 84px;
+  margin-top: 10px;
+  left: 660px;
+  position: absolute;
+  background-image: url("../img/ultravilgaxbot.png");
+  animation: p_bot1 2s ease-in-out infinite;
+}
+
+@keyframes p_bot1 {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+.bot1_explode {
+  width: 67px;
+  height: 83px;
+  margin-top: 10px;
+  left: 660px;
+  position: absolute;
+  background-image: url("../img/boomm.png");
+  animation: pe_bot1 0.5s steps(6) infinite;
+  -webkit-animation: pe_bot1 0.5s steps(6) infinite;
+  -moz-animation: pe_bot1 0.5s steps(6) infinite;
+  -ms-animation: pe_bot1 0.5s steps(6) infinite;
+  -o-animation: pe_bot1 0.5s steps(6) infinite;
+}
+
+@keyframes pe_bot1 {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+  from { background-position: 0px; }
+  to { background-position: -400px; }
+}
+
+@-webkit-keyframes pe_bot1 {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+  from { background-position: 0px; }
+  to { background-position: -400px; }
+}
+
+@-moz-keyframes pe_bot1 {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+  from { background-position: 0px; }
+  to { background-position: -400px; }
+}
+
+@-ms-keyframes pe_bot1 {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+  from { background-position: 0px; }
+  to { background-position: -400px; }
+}
+
+@-o-keyframes pe_bot1 {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+  from { background-position: 0px; }
+  to { background-position: -400px; }
+}
+
+.omnitrix {
+  width: 41px;
+  height: 46px;
+  position: absolute;
+  background-image: url("../img/omnicon.png");
+  animation: p_omnitrix 2s ease-in-out infinite;
+}
+
+@keyframes p_omnitrix {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+.tiro_bot2 {
+  width: 32px;
+  height: 32px;
+  left: 810px;
+  top: 10px;
+  position: absolute;
+  background-image: url("../img/dalektiro.png");
+  animation: p_ini_tiro 0.4s steps(3) infinite;
+  -webkit-animation: p_ini_tiro 0.4s steps(3) infinite;
+  -moz-animation: p_ini_tiro 0.4s steps(3) infinite;
+  -ms-animation: p_ini_tiro 0.4s steps(3) infinite;
+  -o-animation: p_ini_tiro 0.4s steps(3) infinite;
+}
+
+@keyframes p_ini_tiro {
+  from { background-position: 0px; }
+  to { background-position: -96px; }
+}
+
+@-webkit-keyframes p_ini_tiro {
+  from { background-position: 0px; }
+  to { background-position: -96px; }
+}
+
+@-moz-keyframes p_ini_tiro {
+  from { background-position: 0px; }
+  to { background-position: -96px; }
+}
+
+@-ms-keyframes p_ini_tiro {
+  from { background-position: 0px; }
+  to { background-position: -96px; }
+}
+
+@-o-keyframes p_ini_tiro {
+  from { background-position: 0px; }
+  to { background-position: -96px; }
+}
+
+.tiro_bot1 {
+  width: 32px;
+  height: 32px;
+  left: 810px;
+  top: 10px;
+  position: absolute;
+  background-image: url("../img/tirobot1.png");
+  animation: p_tiro_bot1 0.4s steps(3) infinite;
+  -webkit-animation: p_tiro_bot1 0.4s steps(3) infinite;
+  -moz-animation: p_tiro_bot1 0.4s steps(3) infinite;
+  -ms-animation: p_tiro_bot1 0.4s steps(3) infinite;
+  -o-animation: p_tiro_bot1 0.4s steps(3) infinite;
+}
+
+@keyframes p_tiro_bot1 {
+  from { background-position: 0px; }
+  to { background-position: -96px; }
+}
+
+@-webkit-keyframes p_tiro_bot1 {
+  from { background-position: 0px; }
+  to { background-position: -96px; }
+}
+
+@-moz-keyframes p_tiro_bot1 {
+  from { background-position: 0px; }
+  to { background-position: -96px; }
+}
+
+@-ms-keyframes p_tiro_bot1 {
+  from { background-position: 0px; }
+  to { background-position: -96px; }
+}
+
+@-o-keyframes p_tiro_bot1 {
+  from { background-position: 0px; }
+  to { background-position: -96px; }
+}
+
+.tiro {
+  width: 52px;
+  height: 20px;
+  margin-top: 0;
+  position: absolute;
+  background-image: url("../img/gosma.png");
+}
+
+.pontos {
+  width: 150px;
+  height: 50px;
+  color: #fff;
+  margin-left: 620px;
+  font-family: Tiny5;
+  top: 5px;
+  text-align: center;
+  position: absolute;
+}

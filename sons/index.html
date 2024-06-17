@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Space Invaders Clone</title>
+<style>
+    #gameArea {
+        width: 400px;
+        height: 400px;
+        border: 1px solid #ccc;
+        position: relative;
+    }
+
+    .invader {
+        width: 30px;
+        height: 30px;
+        background-color: red;
+        position: absolute;
+    }
+
+    #insectoide {
+        width: 30px;
+        height: 30px;
+        background-color: blue;
+        position: absolute;
+        bottom: 0;
+    }
+
+    .explosion {
+        width: 50px;
+        height: 50px;
+        background-image: url('https://media.giphy.com/media/l0HlKcy8FfwBym6jm/giphy.gif');
+        background-size: contain;
+        position: absolute;
+    }
+</style>
+</head>
+<body>
+
+<div id="gameArea">
+    <div id="insectoide"></div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://raw.githubusercontent.com/collision/jquery-collision/master/js/jquery-collision.min.js"></script>
+<script>
+$(document).ready(function(){
+    var insectoide = $('#insectoide');
+    var gameArea = $('#gameArea');
+    var invaders = [];
+    var shots = [];
+    var explosions = [];
+    var speed = 2;
+    var moveLeft = false;
+    var moveRight = false;
+    var interval;
+
+    function createInvader() {
+        var invader = $('<div class="invader"></div>');
+        invader.css('top', '0');
+        invader.css('left', Math.random() * (gameArea.width() - 30));
+        gameArea.append(invader);
+        invaders.push(invader);
+    }
+
+    function moveInvaders() {
+        for (var i = 0; i < invaders.length; i++) {
+            invaders[i].css('top', '+=' + speed);
+            if (invaders[i].position().top >= gameArea.height()) {
+                gameOver();
+                return;
+            }
+        }
+    }
+
+    function createExplosion(x, y) {
+        var explosion = $('<div class="explosion"></div>');
+        explosion.css('left', x - 10); // Adjust position for explosion
+        explosion.css('top', y - 10); // Adjust position for explosion
+        gameArea.append(explosion);
+        setTimeout(function() {
+            explosion.remove();
+        }, 500);
+    }
+
+    function gameOver() {
+        clearInterval(interval);
+        alert('Game Over');
+    }
+
+    function checkCollisions() {
+        insectoide.collision('.invader').each(function(){
+            gameOver();
+        });
+
+        for (var i = 0; i < shots.length; i++) {
+            for (var j = 0; j < invaders.length; j++) {
+                if (shots[i].collision(invaders[j]).length > 0) {
+                    createExplosion(invaders[j].position().left, invaders[j].position().top);
+                    shots[i].remove();
+                    invaders[j].remove();
+                    shots.splice(i, 1);
+                    invaders.splice(j, 1);
+                    break;
+                }
+            }
+        }
+    }
+
+    $(document).keydown(function(e){
+        if (e.keyCode == 37) { // Left arrow key
+            moveLeft = true;
+        } else if (e.keyCode == 39) { // Right arrow key
+            moveRight = true;
+        } else if (e.keyCode == 32) { // Space key
+            shoot();
+        }
+    });
+
+    $(document).keyup(function(e){
+        if (e.keyCode == 37) { // Left arrow key
+            moveLeft = false;
+        } else if (e.keyCode == 39) { // Right arrow key
+            moveRight = false;
+        }
+    });
+
+    function moveinsectoide() {
+        if (moveLeft && insectoide.position().left > 0) {
+            insectoide.css('left', '-=' + speed);
+        }
+        if (moveRight && insectoide.position().left < gameArea.width() - insectoide.width()) {
+            insectoide.css('left', '+=' + speed);
+        }
+    }
+
+    function shoot() {
+        var shot = $('<div class="shot"></div>');
+        shot.css('left', insectoide.position().left + insectoide.width() / 2 - 2);
+        shot.css('top', insectoide.position().top);
+        gameArea.append(shot);
+        shots.push(shot);
+    }
+
+    function moveShots() {
+        for (var i = 0; i < shots.length; i++) {
+            shots[i].css('top', '-=5');
+            if (shots[i].position().top < 0) {
+                shots[i].remove();
+                shots.splice(i, 1);
+            }
+        }
+    }
+
+    function gameLoop() {
+        moveinsectoide();
+        moveShots();
+        moveInvaders();
+        checkCollisions();
+    }
+
+    interval = setInterval(gameLoop, 20);
+
+    // Create initial invaders
+    for (var i = 0; i < 5; i++) {
+        createInvader();
+    }
+});
+</script>
+
+</body>
+</html>
